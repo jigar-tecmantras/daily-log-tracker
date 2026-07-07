@@ -2,11 +2,11 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import LogForm from './components/LogForm';
 import LogList from './components/LogList';
 import ManagerView from './components/ManagerView';
-import { fetchEmployees, fetchLogs, submitLog } from './services/api';
+import { fetchEmployees, fetchLogs, submitLog, STATIC_EMPLOYEES } from './services/api';
 import './App.css';
 
 function App() {
-  const [employees, setEmployees] = useState([]);
+  const [employees, setEmployees] = useState(STATIC_EMPLOYEES);
   const [logs, setLogs] = useState([]);
   const [role, setRole] = useState('employee');
   const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
@@ -19,8 +19,8 @@ function App() {
     try {
       const data = await fetchEmployees();
       setEmployees(data);
-    } catch {
-      setError('Unable to load employees.');
+    } catch (loadError) {
+      console.warn('Unable to refresh employee list.', loadError);
     }
   }, []);
 
