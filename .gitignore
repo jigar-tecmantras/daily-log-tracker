@@ -1,0 +1,23 @@
+# Build outputs
+bin/
+obj/
+backend/bin/
+backend/obj/
+
+# Database files
+*.db
+*.sqlite
+dailylogs.db
+
+# Node modules and build artifacts
+node_modules/
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+
+# Development & OS files
+.vs/
+*.user
+*.suo
+.DS_Store
+Thumbs.db
